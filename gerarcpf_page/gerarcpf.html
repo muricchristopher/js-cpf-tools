@@ -14,25 +14,31 @@
    <div class="container">
 
     <header class="title-page">
-        <h1>Validar CPF</h1>
+        <h1>Gerar CPF</h1>
         <p>Rápido, fácil e eficiente!</p>
     </header>
 
     <main class="cpf-validate-area">
         <section class="status-check">
-            INFORME O CPF:
+            CLIQUE EM GERAR CPF
         </section>
 
         <section class="cpf-validate">
             <div class="input-area">
-                <input type="text" maxlength="14" class="cpf-input" onkeydown="keyispressed(event);" >
-                <ion-icon class="input-icon" name="arrow-forward-outline"></ion-icon>
+                <input readonly="readonly"  id="myInput" type="text" maxlength="14" class="cpf-input" >
+                <ion-icon class="input-icon" name="arrow-forward-outline"  onclick="myFunction()"></ion-icon>
             </div>
             
-            <button class="cpf-submit btn" id="btn-submit" type="submit">VALIDAR</button>
+            <button class="cpf-submit btn" id="btn-submit" type="submit">GERAR</button>
         </section>
 
     </main>
+
+    <div class="pop-up">
+        
+    
+    </div>
+    
 
     <footer class="footer">
     </footer>

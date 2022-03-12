@@ -1,20 +1,15 @@
 const btnSubmit = document.querySelector('#btn-submit');
 const inputCPF_Element = document.querySelector('.cpf-input')
 
-btnSubmit.addEventListener('click', checkCPF)
+btnSubmit.addEventListener('click', generateValidCPF);
 
-function checkCPF(){
-    const userCPF = new CPF(inputCPF_Element.value);
+function generateValidCPF(){
+   const generateValidCPF = CPF.generateValidCPF();
 
-    userCPF.validateCPF()
-
-    if(userCPF.cpfWithError) return CPFStatusEffect('err')
-
-    if(!userCPF.isValid) return CPFStatusEffect('invalid')
-    
+    inputCPF_Element.value = generateValidCPF.cpfWithPunction
     CPFStatusEffect()
-
 }
+
 
 function CPFStatusEffect(status){
     //true : valid
@@ -52,35 +47,45 @@ function CPFStatusEffect(status){
     statusCheckElement.classList.remove('invalid')
     statusCheckElement.classList.remove('err')
     statusCheckElement.classList.add('valid')
-    statusCheckElement.innerText = `CPF VÁLIDO`
+    statusCheckElement.innerText = `CPF VÁLIDO GERADO!`
     return
    
 }
 
 
 
-function keyispressed(e){
 
-    if(e.target.value.length != 14){
-        CPFStatusEffect('clean')
+function myFunction() {
+    /* Get the text field */
+    var copyText = document.getElementById("myInput");
+  
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  
+     /* Copy the text inside the text field */
+    navigator.clipboard.writeText(CPF.formatCPF(copyText.value));
+  
+    createPopUp() 
+} 
+
+function createPopUp(){
+
+    const popUpArea = document.querySelector('.pop-up');
+
+    if(popUpArea.children.length < 3){
+        const popUpElement = document.createElement('div');
+        popUpElement.innerText = 'TEXTO COPIADO!!'
+        popUpElement.classList.add('teste');
+        popUpArea.appendChild(popUpElement);
+    
+        setTimeout(() => {
+            popUpArea.removeChild(popUpElement);
+    
+        }, 1000)
     }
-
-    const currentCPF = new CPF(e.target.value)
-    const keycode = e.which;
-    e.target.value  = currentCPF.cpfWithPunction
-
-   if(keycode == 13)  //key 'Enter'
-    return checkCPF()
-
-   if(keycode == 8) //key 'Backspace'
-    return e.target.value = CPF.formatCPF(e.target.value)
-
-   if(keycode == 46) //key 'Delete'
-    return e.target.value =''
-
-   if(keycode >= 48 && keycode <= 57) //any key numbers
-    return
-
-    e.preventDefault()
    
+
+    
+
 }

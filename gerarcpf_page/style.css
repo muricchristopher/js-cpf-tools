@@ -196,3 +196,26 @@ footer{
     }
     
   }
+
+.teste{
+    background-color: #2e3332;
+    width: 200px;
+    height: 50px;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  
+    opacity: 0.9;
+}
+
+.pop-up{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 10px;
+}
