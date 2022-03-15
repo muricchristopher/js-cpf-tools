@@ -64,7 +64,7 @@ function myFunction() {
     copyText.setSelectionRange(0, 99999); /* For mobile devices */
   
      /* Copy the text inside the text field */
-    navigator.clipboard.writeText(CPF.formatCPF(copyText.value));
+    navigator.clipboard.writeText(copyText.value);
   
     createPopUp() 
 } 
@@ -73,9 +73,9 @@ function createPopUp(){
 
     const popUpArea = document.querySelector('.pop-up');
 
-    if(popUpArea.children.length < 3){
+    if(popUpArea.children.length < 2){
         const popUpElement = document.createElement('div');
-        popUpElement.innerText = 'TEXTO COPIADO!!'
+        popUpElement.innerText = 'CPF COPIADO!'
         popUpElement.classList.add('teste');
         popUpArea.appendChild(popUpElement);
     
