@@ -1,4 +1,4 @@
-class CPF{
+export default class CPF{
 	constructor(cpf){
 		this.cpf = CPF.formatCPF(cpf).slice(0,-2)
 		this.cpfWithError = false
@@ -117,10 +117,6 @@ class CPF{
 
 }
 
-const cpf1 = new CPF('543.250.928-89')
-const cpf2 = new CPF('@@@@@@@@@@@')
-const cpf3 = new CPF('281.688.792-87')
-const cpf4 = new CPF('211.388.592-07')
 
 
 

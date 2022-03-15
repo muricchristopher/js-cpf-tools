@@ -1,4 +1,4 @@
-Array.prototype.insert = function(value, position){
+export function insert(value, position){
     let b = this.splice(position)
     this.push(value);
     for (let i = 0; i < b.length; i++) {
@@ -8,6 +8,7 @@ Array.prototype.insert = function(value, position){
     }
     return this
 }
-function getRandomNumberBetween(min,max){
+
+export function getRandomNumberBetween(min,max){
     return Math.floor(Math.random()*(max-min+1)+min);
 }
