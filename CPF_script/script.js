@@ -1,4 +1,4 @@
-export default class CPF{
+class CPF{
 	constructor(cpf){
 		this.cpf = CPF.formatCPF(cpf).slice(0,-2)
 		this.cpfWithError = false
