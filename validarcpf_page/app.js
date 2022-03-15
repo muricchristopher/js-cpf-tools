@@ -1,6 +1,20 @@
 const btnSubmit = document.querySelector('#btn-submit');
 const inputCPF_Element = document.querySelector('.cpf-input')
 
+inputCPF_Element.addEventListener('mousemove', e => {
+    const tempCPF = new CPF(e.target.value);
+    e.target.value = tempCPF.cpfWithPunction
+
+    if(CPF.formatCPF(e.target.value).length > 11){
+        while (e.target.value.length > 11) {
+            e.target.value = CPF.formatCPF(e.target.value).slice(0, -1)
+            
+        }
+    }
+
+})
+
+
 btnSubmit.addEventListener('click', checkCPF)
 
 function checkCPF(){
@@ -58,29 +72,3 @@ function CPFStatusEffect(status){
 }
 
 
-
-function keyispressed(e){
-
-    if(e.target.value.length != 14){
-        CPFStatusEffect('clean')
-    }
-
-    const currentCPF = new CPF(e.target.value)
-    const keycode = e.which;
-    e.target.value  = currentCPF.cpfWithPunction
-
-   if(keycode == 13)  //key 'Enter'
-    return checkCPF()
-
-   if(keycode == 8) //key 'Backspace'
-    return e.target.value = CPF.formatCPF(e.target.value)
-
-   if(keycode == 46) //key 'Delete'
-    return e.target.value =''
-
-   if(keycode >= 48 && keycode <= 57) //any key numbers
-    return
-
-    e.preventDefault()
-   
-}
